@@ -25,15 +25,31 @@
 		<div class="form">  
 				<form>
 					<label for="form-search"></label>
-					<input v-model="search" type="text" placeholder="Search Google or type URL">
+					<input v-model="term" type="text" placeholder="Search Google or type URL">
 				</form>
 		</div>  
 
 		<!-- BUTTONS -->
 		<div class= "buttons">  
-				<input type="submit" value="Google Search" id="google_search">
+				<input type="submit" @click="search" value="Google Search" id="google_search">
 				<input type="submit" value="I'm Feeling Lucky" id="im_feeling_lucky">
 		</div>
+
+		<div v-if="noResults">
+			Sorry, but no results were found. I blame Apple.
+		</div>
+
+		<div v-if="searching">
+			<i>Searching...</i>
+		</div>
+
+		<div v-for="result in results" class="result" :key="result.id">
+				<img :src="result.artworkUrl100">
+				<b>Artist:</b> {{result.artistName}}<br/>
+				<b>Track:</b> {{result.trackName}}<br/>
+				<b>Released:</b> {{result.releaseDate | formatDate}}
+				<br clear="left">
+			</div>
 		
 				
 		<!-- FOOTER -->
@@ -58,12 +74,18 @@ export default {
 	name: 'home',
 	data () {
 		return {
-			search: ''
+			term: '',
 		}
 	},
   components: {
-    
-  }
+
+	},
+
+	methods: {
+		search: function() {
+			this.$router.push({ name: 'search-result', params: { term: this.term } })
+		}
+	}
 }
 </script>
 

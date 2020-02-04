@@ -7,26 +7,26 @@
 
 		<body>
 		<header>
-				<nav>
-				<ul id="nav_bar">
-						<li class="nav-links" id="gmail"><a href="#">Gmail</a></li>
-						<li class="nav-links"><a href="#">Images</a></li>
-						<li id="sign_in"><a href="#">Sign In</a></li>
-				</ul>  
-				</nav>  
+			<nav>
+			<ul id="nav_bar">
+				<li class="nav-links" id="gmail"><a href="#">Gmail</a></li>
+				<li class="nav-links"><a href="#">Images</a></li>
+				<li id="sign_in"><a href="#">Sign In</a></li>
+			</ul>  
+			</nav>  
 		</header>  
 
 		<!-- GOOGLE IMG -->  
 		<div class="google">
-				<a href="#" id="google_logo"><img src="/src/assets/google-logo.png" alt="googlelogo"/></a>
+			<a href="#" id="google_logo"><img src="../assets/google-logo-1.png" style="height: 92px; width: 272px;" alt="googlelogo"/></a>
 		</div>
 
 		<!-- FORM SEARCH -->  
 		<div class="form">  
-				<form>
-					<label for="form-search"></label>
-					<input v-model="term" type="text" placeholder="Search Google or type URL">
-				</form>
+			<form>
+				<label for="form-search"></label>
+				<input v-model="term" type="text" placeholder="Search Google or type URL">
+			</form>
 		</div>  
 
 		<!-- BUTTONS -->
@@ -98,6 +98,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+	position: relative;
+  min-height: 100vh;
 }
 
 header {
@@ -111,6 +113,7 @@ ul {
 /* NAV BAR */
 #nav_bar {
   float: right;
+	font-size: 14px;
 }
 
 #nav_bar li {
@@ -127,7 +130,13 @@ ul {
 }
 
 .nav-links {
-  color: #404040;
+
+	color: rgba(0,0,0,0.87);
+  text-decoration: none;
+	display: inline-block;
+	line-height: 24px;
+	outline: none;
+	vertical-align: middle;
 }
 
 a {
@@ -198,6 +207,8 @@ li.nav-links a:hover {
   margin-bottom: 300px;
 }
 
+
+
 .buttons input {
 	background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
 	background-color: #f2f2f2;
@@ -215,15 +226,22 @@ li.nav-links a:hover {
 	cursor: pointer;
 	user-select: none;
 }
+
+
+.buttons input:hover{
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
+	background-color: #f8f8f8;
+	border: 1px solid #c6c6c6;
+	color: #222;
+}
 /* FOOTER */
 footer  {
-  background: #f2f2f2;
-  border-top: solid 2px #e4e4e4;
-/*   position: fixed; */
+	position: fixed;
   bottom: 0;
-  padding-bottom: 0;
   width: 100%;
-  
+  /* height: 2.5rem; */
+	background: #f2f2f2;
 }
 
 footer ul li {

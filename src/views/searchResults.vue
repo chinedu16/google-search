@@ -9,17 +9,19 @@
 			<i>Searching...</i>
 		</div>
 
-		<div v-if="!searching">
-			<i>Done....</i>
-		</div>
-
-		<div v-for="result in results" class="result" :key="result.id">
-			<img :src="result.artworkUrl100">
-			<b>Artist:</b> {{result.artistName}}<br/>
-			<b>Track:</b> {{result.trackName}}<br/>
-			<b>Released:</b> {{result.releaseDate }}
-			<br clear="left">
-		</div>    
+		<div class="results">
+			<div class="results-body">
+				<div v-for="result in results" class="result" :key="result.id">
+					<img :src="result.artworkUrl100" width="100%" height="100%">
+					<b>Artist:</b> {{result.artistName}}<br/>
+					<b>collections</b> {{result.collectionName}}<br/>
+					<b>Track:</b> {{result.trackName}}<br/>
+					<b>Released:</b> {{result.releaseDate }}
+					<br clear="left">
+				</div> 
+			</div>
+			
+		</div>	   
   </div>
 </template>
 
@@ -48,7 +50,7 @@ export default {
 	},
 	created() {
 		if (!this.$route.params.term) {
-			this.$route.push({name: 'search'})
+			this.$router.push('/search')
 		} else {
 			this.term = this.$route.params.term;
 			this.search()
@@ -61,3 +63,11 @@ export default {
 
 
 <style scoped>
+.results {
+	display: flex;
+}
+
+.results-body {
+	margin: auto;
+}
+</style>
